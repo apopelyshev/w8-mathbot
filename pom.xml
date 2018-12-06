@@ -9,7 +9,7 @@
   <version>1.0</version>
 
   <name>w8-mathbot</name>
-  <!-- FIXME change it to the project's website -->
+  <!-- Here is a little comment for Heroku to remember -->
   <url>https://github.com/apopelyshev/w8-mathbot</url>
 
   <properties>
