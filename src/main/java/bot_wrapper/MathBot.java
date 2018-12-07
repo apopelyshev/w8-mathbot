@@ -11,6 +11,7 @@ public class MathBot extends TelegramLongPollingBot {
   public void onUpdateReceived(Update update) {
     if (update.hasMessage() && update.getMessage().hasText()) {
       Message inp = update.getMessage();
+      System.out.println(inp.getText());
       SendMessage msg = new SendMessage()
           .setChatId(inp.getChatId())
           .setText(inp.getText());
