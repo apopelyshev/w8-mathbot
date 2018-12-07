@@ -23,18 +23,17 @@
       <artifactId>telegrambots</artifactId>
       <version>4.1</version>
     </dependency>
-    <!-- <dependency>
+    <dependency>
       <groupId>org.telegram</groupId>
       <artifactId>telegrambots-meta</artifactId>
       <version>4.1</version>
-    </dependency> -->
+    </dependency>
   </dependencies>
 
   <profiles>
     <profile>
       <id>production</id>
       <activation>
-        <activeByDefault>false</activeByDefault>
         <property>
           <name>BOT_IN_PRODUCTION</name>
         </property>
