@@ -91,6 +91,7 @@
             <manifest>
               <addClasspath>true</addClasspath>
               <mainClass>bot_wrapper.Main</mainClass>
+              <classpathPrefix>dependency/</classpathPrefix>
             </manifest>
           </archive>
         </configuration>

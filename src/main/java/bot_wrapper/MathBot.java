@@ -27,6 +27,6 @@ public class MathBot extends TelegramLongPollingBot {
   }
   @Override
   public String getBotToken () {
-    return System.getProperty("BOT_ACCESS_TOKEN");
+    return System.getenv().get("BOT_ACCESS_TOKEN");
   }
 }
