@@ -14,7 +14,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 public class MathBot extends TelegramLongPollingBot {
   protected String[] logoPaths = {
     "../target/generated-sources/banner.txt",
-    "/generated-sources/banner.txt",
+    "banner.txt",
     "generated-sources/banner.txt",
     "../generated-sources/banner.txt"
   };
