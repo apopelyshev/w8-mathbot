@@ -1,21 +1,16 @@
-﻿                            `+yddho.                                   
-                    `.:/+.`hddddddy +hhhhhyysso++/-.`                 
-             `.:+syhddddd-`hdddddh/ -oosssyyhhhddddddhyo/-`           
-         `-+shddddhhyo/:-  ./oso/.           `.-:/oshhdddddy+-`       
-      `-ohddddhy+:.       `-----                     .:ohdddddh+.     
-    `:ydddddy/.           ydddd/                        `:shdddddo.   
-   -ydddddy:             +dddds   +oooooooooooooosss+.     -ydddddh/  
-  :hdddddo`             -ddddh.  /hhhhhhhhhdddddddy/`       `ydddddd: 
- -dddddds              `ydddd:   ........-oddddds:`          :ddddddh 
- sdddddd-              +ddddo          .+hdddhs-             .ddddddh 
- hdddddd`             -ddddh`        .ohdddho-               /ddddddo 
- ydddddd-            `hdddd-       -ohdddh+.                -hdddddy` 
- /dddddds            odddd+      :sddddh+.                .+hddddh+`  
- `sddddddo`         :ddddy`   `:yddddy/`              `-/shddddho.    
-  `+ddddddy:        ossss-  `/yddddy/.``````...--:/+oyhhddddyo:`      
-    -sdddddds:`           .+hddddddhhhhhhhhhhhhhdddddddhso:.`         
-      -ohdddddho:.       .+ssyyyhhhhhhhhhhhhyyysso+/:-``              
-        `-oydddddhyo/-.       ````````````````       .-:-`            
-            `:+shdddddhhyso+/::--..........---::/+oyhhdddhhs+-        
-                 `-/+syhdddddddddddddddddddddddddddddhyso+/-.         
-                        `.-::/+++ooooooooo+++//::-..`     
+﻿<pre>====   YOU ARE NOW IN   ====
+   ___  ___ ___ _   _  ___ 
+  |   \| __| _ ) | | |/ __|
+  | |) | _|| _ \ |_| | (_ |
+  |___/|___|___/\___/ \___|
+    __  __  ___  ___  ___ 
+   |  \/  |/ _ \|   \| __|
+   | |\/| | (_) | |) | _| 
+   |_|  |_|\___/|___/|___|
+         .
+        ":"
+      ___:____     |"\/"|
+    ,'        `.    \  /
+    | O         \___/  |
+  ~^~^~^~^~^~^~^~^~^~^~^~^~
+=============================</pre>
