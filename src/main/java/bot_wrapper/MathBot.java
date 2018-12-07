@@ -14,15 +14,11 @@ public class MathBot extends TelegramLongPollingBot {
       SendMessage msg = new SendMessage()
           .setChatId(inp.getChatId())
           .setText(inp.getText());
-      
       try {
         execute(msg);
       } catch (TelegramApiException e) {
         e.printStackTrace();
       }
-      // } catch (TelegramApiException e) {
-      //   e.printStackTrace();
-      // }
     }
   }
   @Override
