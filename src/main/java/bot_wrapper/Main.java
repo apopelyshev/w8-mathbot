@@ -1,7 +1,8 @@
 package bot_wrapper;
 
 import org.telegram.telegrambots.meta.TelegramBotsApi;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
+// import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.ApiContextInitializer;
 
 public class Main {
@@ -12,8 +13,13 @@ public class Main {
 
     try {
       botsApi.registerBot(new MathBot());
-    } catch (TelegramApiException e) {
+    } catch (TelegramApiRequestException e) {
       e.printStackTrace();
     }
+    // try {
+      
+    // } catch (TelegramApiException e) {
+    //   e.printStackTrace();
+    // }
   }
 }
