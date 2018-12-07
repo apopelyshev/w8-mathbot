@@ -13,6 +13,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <heroku.check>${env.BOT_IN_PRODUCTION}</heroku.check>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
@@ -35,7 +36,7 @@
       <id>production</id>
       <activation>
         <property>
-          <name>BOT_IN_PRODUCTION</name>
+          <name>heroku.check</name>
         </property>
       </activation>
       <build>
