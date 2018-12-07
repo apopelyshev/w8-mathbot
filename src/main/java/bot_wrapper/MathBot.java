@@ -12,12 +12,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 public class MathBot extends TelegramLongPollingBot {
-  protected String[] logoPaths = {
-    "../target/generated-sources/banner.txt",
-    "banner.txt",
-    "generated-sources/banner.txt",
-    "../generated-sources/banner.txt"
-  };
+  protected String logoPath = "banner.txt";
 
   @Override
   public void onUpdateReceived(Update update) {
@@ -25,17 +20,14 @@ public class MathBot extends TelegramLongPollingBot {
       Message inp = update.getMessage();
       SendMessage msg = new SendMessage()
           .setChatId(inp.getChatId());
-      for (String path : logoPaths) {
-        try {
-          List<String> wiz_logo = getLogo(path);
-          String res = String.valueOf((Object) wiz_logo);
-          if (res!=null && res!="") {
-            msg.setText(res);
-            break;
-          }
-        } catch (IOException e1) {
-          continue;
+      try {
+        List<String> wiz_logo = getLogo(logoPath);
+        String res = String.valueOf((Object) wiz_logo);
+        if (res!=null && res!="") {
+          msg.setText(res);
         }
+      } catch (IOException e1) {
+        e1.printStackTrace();
       }
       try {
         execute(msg);
