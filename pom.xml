@@ -56,50 +56,55 @@
         </plugins>
       </build>
     </profile>
+    <profile>
+      <id>general</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <!-- <plugin>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>3.1.0</version>
+            <configuration>
+              <outputDirectory>
+                ${project.build.directory}\generated-sources
+              </outputDirectory>
+            </configuration>
+          </plugin> -->
+          <plugin>
+            <artifactId>maven-clean-plugin</artifactId>
+            <version>3.0.0</version>
+            <executions>
+              <execution>
+                <id>auto-clean</id>
+                <phase>initialize</phase>
+                <goals>
+                  <goal>clean</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.0.2</version>
+            <configuration>
+              <includes>
+                <include>**/*.class</include>
+                <include>**/*.java</include>
+                <include>*.txt</include>
+              </includes>
+              <archive>
+                <manifest>
+                  <addClasspath>true</addClasspath>
+                  <mainClass>bot_wrapper.Main</mainClass>
+                  <classpathPrefix>dependency/</classpathPrefix>
+                </manifest>
+              </archive>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
-
-  <build>
-    <plugins>
-      <!-- <plugin>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>3.1.0</version>
-        <configuration>
-          <outputDirectory>
-            ${project.build.directory}\generated-sources
-          </outputDirectory>
-        </configuration>
-      </plugin> -->
-      <plugin>
-        <artifactId>maven-clean-plugin</artifactId>
-        <version>3.0.0</version>
-        <executions>
-          <execution>
-            <id>auto-clean</id>
-            <phase>initialize</phase>
-            <goals>
-              <goal>clean</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.0.2</version>
-        <configuration>
-          <includes>
-            <include>**/*.class</include>
-            <include>**/*.java</include>
-            <include>**/*.txt</include>
-          </includes>
-          <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <mainClass>bot_wrapper.Main</mainClass>
-              <classpathPrefix>dependency/</classpathPrefix>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>
