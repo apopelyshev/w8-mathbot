@@ -15,7 +15,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 public class MathBot extends TelegramLongPollingBot {
-  protected String logoPath = "banner.txt";
+  protected String logoPath = "/app/target/classes/banner.txt";
 
   @Override
   public void onUpdateReceived(Update update) {
@@ -23,15 +23,14 @@ public class MathBot extends TelegramLongPollingBot {
       Message inp = update.getMessage();
       SendMessage msg = new SendMessage()
           .setChatId(inp.getChatId());
-      // try {
-      //   List<String> wiz_logo = getLogo(logoPath);
-      //   String res = String.valueOf((Object) wiz_logo);
-      //   msg.setText(res)
-      //      .enableHtml(true);
-      // } catch (IOException e1) {
-      //   e1.printStackTrace();
-      // }
-      System.out.println(whereTheFuckAmI());
+      try {
+        List<String> wiz_logo = getLogo(logoPath);
+        String res = String.valueOf((Object) wiz_logo);
+        msg.setText(res)
+           .enableHtml(true);
+      } catch (IOException e1) {
+        e1.printStackTrace();
+      }
       try {
         execute(msg);
       } catch (TelegramApiException e) {
@@ -50,14 +49,14 @@ public class MathBot extends TelegramLongPollingBot {
   public static List<String> getLogo(String filename) throws IOException {
     return Files.readAllLines(Paths.get(filename), StandardCharsets.UTF_8);
   }
-  public static String whereTheFuckAmI() {
-    String path = MathBot.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-    String decodedPath = "";
-    try {
-      decodedPath = URLDecoder.decode(path, "UTF-8");
-    } catch (UnsupportedEncodingException e) {
-      e.printStackTrace();
-    }
-    return decodedPath;
-  }
+  // public static String whereTheFuckAmI() {
+  //   String path = MathBot.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+  //   String decodedPath = "";
+  //   try {
+  //     decodedPath = URLDecoder.decode(path, "UTF-8");
+  //   } catch (UnsupportedEncodingException e) {
+  //     e.printStackTrace();
+  //   }
+  //   return decodedPath;
+  // }
 }
