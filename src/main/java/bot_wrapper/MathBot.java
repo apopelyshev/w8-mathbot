@@ -1,6 +1,9 @@
 package bot_wrapper;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -20,14 +23,15 @@ public class MathBot extends TelegramLongPollingBot {
       Message inp = update.getMessage();
       SendMessage msg = new SendMessage()
           .setChatId(inp.getChatId());
-      try {
-        List<String> wiz_logo = getLogo(logoPath);
-        String res = String.valueOf((Object) wiz_logo);
-        msg.setText(res)
-           .enableHtml(true);
-      } catch (IOException e1) {
-        e1.printStackTrace();
-      }
+      // try {
+      //   List<String> wiz_logo = getLogo(logoPath);
+      //   String res = String.valueOf((Object) wiz_logo);
+      //   msg.setText(res)
+      //      .enableHtml(true);
+      // } catch (IOException e1) {
+      //   e1.printStackTrace();
+      // }
+      System.out.println(whereTheFuckAmI());
       try {
         execute(msg);
       } catch (TelegramApiException e) {
@@ -45,5 +49,15 @@ public class MathBot extends TelegramLongPollingBot {
   }
   public static List<String> getLogo(String filename) throws IOException {
     return Files.readAllLines(Paths.get(filename), StandardCharsets.UTF_8);
+  }
+  public static String whereTheFuckAmI() {
+    String path = MathBot.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+    String decodedPath = "";
+    try {
+      decodedPath = URLDecoder.decode(path, "UTF-8");
+    } catch (UnsupportedEncodingException e) {
+      e.printStackTrace();
+    }
+    return decodedPath;
   }
 }
