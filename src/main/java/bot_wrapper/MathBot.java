@@ -1,13 +1,12 @@
 package bot_wrapper;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
+
+import org.apache.http.message.BufferedHeader;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -15,7 +14,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 public class MathBot extends TelegramLongPollingBot {
-  protected String logoPath = "/app/target/classes/banner.txt";
+  protected static final String DEBUG_STUB_PATH = "/app/target/classes/banner.txt";
 
   @Override
   public void onUpdateReceived(Update update) {
@@ -23,14 +22,8 @@ public class MathBot extends TelegramLongPollingBot {
       Message inp = update.getMessage();
       SendMessage msg = new SendMessage()
           .setChatId(inp.getChatId());
-      try {
-        List<String> wiz_logo = getLogo(logoPath);
-        String res = String.valueOf((Object) wiz_logo);
-        msg.setText(res)
-           .enableHtml(true);
-      } catch (IOException e1) {
-        e1.printStackTrace();
-      }
+      msg.setText(getDebugStub())
+         .enableHtml(true);
       try {
         execute(msg);
       } catch (TelegramApiException e) {
@@ -46,17 +39,22 @@ public class MathBot extends TelegramLongPollingBot {
   public String getBotToken () {
     return System.getenv().get("BOT_ACCESS_TOKEN");
   }
-  public static List<String> getLogo(String filename) throws IOException {
-    return Files.readAllLines(Paths.get(filename), StandardCharsets.UTF_8);
+  public static String getDebugStub() {
+    File file = new File(DEBUG_STUB_PATH);
+    try {
+      FileReader reader = new FileReader(file);
+      BufferedReader bfReader = new BufferedReader(reader);
+      StringBuffer bfString = new StringBuffer();
+      String line;
+      while ((line = bfReader.readLine())!=null)
+        bfString.append(line+"\n");
+      reader.close();
+      return bfString.toString();
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return null;
   }
-  // public static String whereTheFuckAmI() {
-  //   String path = MathBot.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-  //   String decodedPath = "";
-  //   try {
-  //     decodedPath = URLDecoder.decode(path, "UTF-8");
-  //   } catch (UnsupportedEncodingException e) {
-  //     e.printStackTrace();
-  //   }
-  //   return decodedPath;
-  // }
 }
