@@ -37,6 +37,11 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <build>
+        <resources>
+          <resource>
+              <directory>src/main/resources</directory>
+          </resource>
+        </resources>
         <plugins>
           <!-- <plugin>
             <artifactId>maven-resources-plugin</artifactId>
@@ -64,11 +69,6 @@
             <artifactId>maven-jar-plugin</artifactId>
             <version>3.0.2</version>
             <configuration>
-              <includes>
-                <include>**/*.class</include>
-                <include>**/*.java</include>
-                <include>*.txt</include>
-              </includes>
               <archive>
                 <manifest>
                   <addClasspath>true</addClasspath>
@@ -95,7 +95,7 @@
             <version>3.0.1</version>
             <executions>
               <execution>
-                <phase>package</phase>
+                <phase>process-resources</phase>
                 <id>copy-dependencies</id>
                 <goals>
                   <goal>copy-dependencies</goal>
