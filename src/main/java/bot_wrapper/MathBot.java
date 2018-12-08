@@ -12,7 +12,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 public class MathBot extends TelegramLongPollingBot {
-  protected String logoPath = "../banner.txt";
+  protected String logoPath = "banner.txt";
 
   @Override
   public void onUpdateReceived(Update update) {
