@@ -6,31 +6,53 @@
   <groupId>com.github.apopelyshev</groupId>
   <artifactId>w8-mathbot</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
 
   <name>w8-mathbot</name>
-  <!-- Here is a little comment for Heroku to remember -->
   <url>https://github.com/apopelyshev/w8-mathbot</url>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <heroku.check>${env.BOT_IN_PRODUCTION}</heroku.check>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <telegrambots.version>4.1</telegrambots.version>
+    <webapp-runner.version>9.0.13.0</webapp-runner.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>org.telegram</groupId>
       <artifactId>telegrambots</artifactId>
-      <version>4.1</version>
+      <version>${telegrambots.version}</version>
     </dependency>
     <dependency>
       <groupId>org.telegram</groupId>
       <artifactId>telegrambots-meta</artifactId>
-      <version>4.1</version>
+      <version>${telegrambots.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.jsimone</groupId>
+      <artifactId>webapp-runner-main</artifactId>
+      <version>${webapp-runner.version}</version>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 
   <profiles>
+    <!-- <profile>
+      <id>production</id>
+      <activation>
+        <property>
+          <name>heroku.check</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          
+        </plugins>
+      </build>
+    </profile> -->
     <profile>
       <id>general</id>
       <activation>
@@ -45,16 +67,27 @@
         <plugins>
           <plugin>
             <artifactId>maven-dependency-plugin</artifactId>
-            <version>3.0.1</version>
+            <version>3.1.1</version>
             <executions>
               <execution>
-                <phase>process-resources</phase>
-                <id>copy-dependencies</id>
+                <id>copy</id>
+                <phase>package</phase>
                 <goals>
-                  <goal>copy-dependencies</goal>
+                  <goal>copy</goal>
                 </goals>
               </execution>
             </executions>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>com.github.jsimone</groupId>
+                  <artifactId>webapp-runner-main</artifactId>
+                  <version>${webapp-runner.version}</version>
+                  <type>jar</type>
+                  <destFileName>webapp-runner.jar</destFileName>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
           </plugin>
           <plugin>
             <artifactId>maven-clean-plugin</artifactId>
@@ -70,14 +103,14 @@
             </executions>
           </plugin>
           <plugin>
-            <artifactId>maven-jar-plugin</artifactId>
-            <version>3.0.2</version>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>3.2.2</version>
             <configuration>
               <archive>
                 <manifest>
                   <addClasspath>true</addClasspath>
                   <mainClass>bot_wrapper.Main</mainClass>
-                  <classpathPrefix>dependency/</classpathPrefix>
+                  <!-- <classpathPrefix>lib/</classpathPrefix> -->
                 </manifest>
               </archive>
             </configuration>
@@ -85,18 +118,9 @@
         </plugins>
       </build>
     </profile>
-    <!-- <profile>
-      <id>production</id>
-      <activation>
-        <property>
-          <name>env.BOT_IN_PRODUCTION</name>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          
-        </plugins>
-      </build>
-    </profile> -->
   </profiles>
+
+  <build>
+    <finalName>w8-mathbot</finalName>
+  </build>
 </project>
