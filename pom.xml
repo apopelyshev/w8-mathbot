@@ -75,19 +75,19 @@
                 <goals>
                   <goal>copy</goal>
                 </goals>
+                <configuration>
+                  <artifactItems>
+                    <artifactItem>
+                      <groupId>com.github.jsimone</groupId>
+                      <artifactId>webapp-runner</artifactId>
+                      <version>${webapp-runner.version}</version>
+                      <type>jar</type>
+                      <destFileName>webapp-runner.jar</destFileName>
+                    </artifactItem>
+                  </artifactItems>
+                </configuration>
               </execution>
             </executions>
-            <configuration>
-              <artifactItems>
-                <artifactItem>
-                  <groupId>com.github.jsimone</groupId>
-                  <artifactId>webapp-runner-main</artifactId>
-                  <version>${webapp-runner.version}</version>
-                  <type>jar</type>
-                  <destFileName>webapp-runner.jar</destFileName>
-                </artifactItem>
-              </artifactItems>
-            </configuration>
           </plugin>
           <plugin>
             <artifactId>maven-clean-plugin</artifactId>
