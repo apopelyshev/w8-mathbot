@@ -1,1 +1,1 @@
-"# w8-mathbot" 
+# WIZ Faculty Math bot
